@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida After Dark — Cinematic Cover Studio</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-star">★</span>
+    <div>
+      <h1>LEONIDA AFTER DARK</h1>
+      <p>Cinematic single-hero poster engine — your photos, a painted Vice City skyline, one PNG to share.</p>
+    </div>
+  </div>
+  <div class="badges">
+    <span class="badge">OFFLINE</span>
+    <span class="badge">NO UPLOAD</span>
+    <span class="badge">PNG EXPORT</span>
+  </div>
+</header>
+<main class="studio">
+  <section class="controls" aria-label="Cover controls">
+    <h2>1 · Photos</h2>
+    <p class="hint">Your photos stay on your machine. Pick one per panel, or fill every panel with the same photo.</p>
+    <div class="photo-grid">
+      <label class="photo-pick">Hero photo <input id="photo-hero" type="file" accept="image/*"></label>
+      <label class="photo-pick">Strip photo 1 <input id="photo-strip1" type="file" accept="image/*"></label>
+      <label class="photo-pick">Strip photo 2 <input id="photo-strip2" type="file" accept="image/*"></label>
+    </div>
+    <div class="row">
+      <button id="sampleBtn" type="button" class="btn ghost">Load sample photos</button>
+      <button id="fillAllBtn" type="button" class="btn ghost">One photo, all panels</button>
+    </div>
+
+    <h2>2 · Crop &amp; position</h2>
+    <p class="hint">Select a panel, then drag the preview to pan, scroll to zoom, or use the sliders.</p>
+    <div class="row" role="group" aria-label="Select panel">
+      <button type="button" class="seg active" data-panel="hero">Hero</button>
+      <button type="button" class="seg" data-panel="strip1">Strip 1</button>
+      <button type="button" class="seg" data-panel="strip2">Strip 2</button>
+    </div>
+    <label class="slider">Zoom <span id="zoomValue">100%</span>
+      <input id="zoomRange" type="range" min="1" max="3" step="0.05" value="1">
+    </label>
+    <label class="slider">Pan left / right
+      <input id="panXRange" type="range" min="-1" max="1" step="0.05" value="0">
+    </label>
+    <label class="slider">Pan up / down
+      <input id="panYRange" type="range" min="-1" max="1" step="0.05" value="0">
+    </label>
+    <div class="row">
+      <button type="button" class="chip" data-focal="top">Focus top</button>
+      <button type="button" class="chip" data-focal="center">Focus centre</button>
+      <button type="button" class="chip" data-focal="left">Focus left</button>
+      <button type="button" class="chip" data-focal="right">Focus right</button>
+      <button id="resetCropBtn" type="button" class="chip">Reset crop</button>
+    </div>
+
+    <h2>3 · Caption</h2>
+    <label class="field">Main caption
+      <input id="captionInput" type="text" maxlength="48" value="WELCOME TO LEONIDA">
+    </label>
+    <div id="captionChips" class="chips"></div>
+    <label class="field">Subcaption
+      <input id="subcaptionInput" type="text" maxlength="48" value="A LEONIDA STORY">
+    </label>
+    <div id="subcaptionChips" class="chips"></div>
+    <p class="hint">Lettering style</p>
+    <div id="letterStyleRow" class="row"></div>
+
+    <h2>4 · Grade &amp; size</h2>
+    <div class="row" role="group" aria-label="Colour grade">
+      <button type="button" class="seg" data-grade="golden">Golden Hour</button>
+      <button type="button" class="seg active" data-grade="neon">Neon Night</button>
+    </div>
+    <div id="sizeRow" class="row"></div>
+    <button id="exportBtn" type="button" class="btn primary">Export PNG — download your cover</button>
+    <p id="statusLine" role="status">Load a photo or try the samples to start.</p>
+  </section>
+  <section class="preview" aria-label="Live preview">
+    <p id="sizeLabel" class="size-label">Wide 1920 x 1080 — live preview</p>
+    <div id="previewWrap" class="preview-wrap">
+      <canvas id="previewCanvas" width="1920" height="1080" aria-label="Live cover preview"></canvas>
+    </div>
+    <p class="hint">Drag the cover to pan the selected panel · Scroll to zoom · Every change redraws live.</p>
+  </section>
+</main>
+<footer class="foot">
+  <p>Leonida After Dark is an original poster engine. Painted skyline, lettering and layout are drawn in code — no game artwork, no game fonts. Typeface: Anton (SIL Open Font License, in app/fonts). Sample photos are AI-made and free to use.</p>
+</footer>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
